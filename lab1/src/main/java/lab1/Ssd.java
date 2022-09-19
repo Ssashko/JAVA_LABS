@@ -1,4 +1,7 @@
 package lab1;
+
+import java.util.Objects;
+
 enum FormFactorSsd {
     _2_5,
     M_2,
@@ -11,20 +14,32 @@ enum MemoryTypeSsd {
     QLS,
     None
 }
+/**
+ * It's a class that describes a Ssd disk's parameters.
+ * It inherit Disk
+ * @author Oleksandr Marianchuk
+ * */
 final public class Ssd extends Disk {
     private final MemoryTypeSsd memoryType;
     private final FormFactorSsd formfactor;
-
+    /**
+     * constructor that accepts class-builder.
+     * Each field of class-builder must be filled
+     * */
     Ssd(BuilderSsd bs){
         super(bs);
         this.memoryType = bs.memoryType;
         this.formfactor = bs.formfactor;
     }
-
+    /**
+     * getter that returns an enum type of disk's memory type.
+     * */
     public MemoryTypeSsd getMemoryType() {
         return memoryType;
     }
-
+    /**
+     * getter that returns an enum type of disk's form factor.
+     * */
     public FormFactorSsd getFormfactor() {
         return formfactor;
     }
@@ -47,16 +62,46 @@ final public class Ssd extends Disk {
         }
         return result;
     }
+    @Override
+    public boolean equals(Object obj){
+        if(obj == this)
+            return true;
+        if(obj == null || getClass() != obj.getClass())
+            return false;
+        if(!super.equals(obj))
+            return false;
+        Ssd dsk = (Ssd)obj;
+
+        if(!Objects.equals(memoryType,dsk.memoryType) || !Objects.equals(formfactor,dsk.formfactor))
+            return false;
+        return true;
+    }
+    @Override
+    public int hashCode(){
+        int result = super.hashCode();
+        result = result*31 + memoryType.hashCode();
+        result = result*31 + formfactor.hashCode();
+        return result;
+    }
+    /**
+     * It's a builder class that describes a Hdd disk's parameters
+     * It inherit Disk.BuilderDisk
+     * @author Oleksandr Marianchuk
+     * */
     final static public class BuilderSsd extends Disk.BuilderDisk {
 
         private MemoryTypeSsd memoryType = MemoryTypeSsd.None;
         private FormFactorSsd formfactor = FormFactorSsd.None;
-
+        /**
+         * setter that assigns an enum type of disk's memory type.
+         * */
         public BuilderSsd setMemoryType(MemoryTypeSsd memoryType) {
             this.memoryType = memoryType;
             return this;
         }
-
+        /**
+         * setter that assigns an enum type of disk's form factor.
+         * */
         public BuilderSsd setFormfactor(FormFactorSsd formfactor) {
             this.formfactor = formfactor;
             return this;
@@ -64,11 +109,16 @@ final public class Ssd extends Disk {
         BuilderSsd() {
             super();
         }
-
+        /**
+         * a method that builds a complete object
+         * */
         public Ssd build()
         {
             return new Ssd(this);
         }
+        /**
+         * a method that checks the correctness of fields and their completeness
+         * */
         @Override
         public boolean validate () {
             return super.validate() && memoryType != MemoryTypeSsd.None && formfactor != FormFactorSsd.None;

@@ -17,7 +17,8 @@ public class Main {
                 .setInterface_(PCInterfaces.SATA);
         Hdd bd = bhbuilder.build();
         System.out.print("\n\nHDD drive:\n\n");
-        System.out.print(bd.toString());
+        System.out.printf("\nHDD drive hash: %d\n", bd.hashCode());
+        System.out.print(bd);
 
         Ssd.BuilderSsd ssdbuilder = new Ssd.BuilderSsd();
         ssdbuilder.setFormfactor(FormFactorSsd.M_2)
@@ -33,7 +34,8 @@ public class Main {
                 .setInterface_(PCInterfaces.PCIE);
         Ssd ssd = ssdbuilder.build();
         System.out.print("\n\nSSD drive:\n\n");
-        System.out.print(ssd.toString());
+        System.out.printf("\nSSD drive hash: %d\n", ssd.hashCode());
+        System.out.print(ssd);
     }
 
 }
