@@ -15,7 +15,7 @@ public class Main {
                 .setRandomSpeedOfRead(1024*1024*3)
                 .setRandomSpeedOfWrite(1024*1024*3)
                 .setInterface_(PCInterfaces.SATA);
-        Hdd bd = (Hdd)bhbuilder.build();
+        Hdd bd = bhbuilder.build();
         System.out.print("\n\nHDD drive:\n\n");
         System.out.printf("\nHDD drive hash: %d\n", bd.hashCode());
         System.out.print(bd);
@@ -32,7 +32,7 @@ public class Main {
                 .setRandomSpeedOfRead(1024*1024*550)
                 .setRandomSpeedOfWrite(1024*1024*550)
                 .setInterface_(PCInterfaces.PCIE);
-        Ssd ssd = (Ssd)ssdbuilder.build();
+        Ssd ssd = ssdbuilder.build();
         System.out.print("\n\nSSD drive:\n\n");
         System.out.printf("\nSSD drive hash: %d\n", ssd.hashCode());
         System.out.print(ssd);
