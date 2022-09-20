@@ -5,14 +5,12 @@ import static org.testng.Assert.assertEquals;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import lab0.variant_8;
-
-public class testVariant_8 {
+public class TestVariant_8 {
 
         public static double EPS = 0.0000001;
         @Test(dataProvider = "integerProvider")
         public void integerTest(int p1, int p3) {
-            assertEquals(new variant_8().integerTask(p1), p3);
+            assertEquals(new Variant_8().integerTask(p1), p3);
         }
 
         @DataProvider
@@ -22,14 +20,14 @@ public class testVariant_8 {
 
         @Test(expectedExceptions = AssertionError.class)
         public void negativeIntegerTest() {
-            new variant_8().integerTask(-2);
+            new Variant_8().integerTask(-2);
         }
 
         ////////////////////////////////////////////////
 
         @Test(dataProvider = "ifProvider")
         public void ifTest(double p1,double p2, double p3,double p4) {
-            assertEquals(new variant_8().ifTask(p1,p2), new double[]{p3, p4},EPS);
+            assertEquals(new Variant_8().ifTask(p1,p2), new double[]{p3, p4},EPS);
         }
 
         @DataProvider
@@ -41,7 +39,7 @@ public class testVariant_8 {
 
         @Test(dataProvider = "booleanProvider")
         public void booleanTest(int p1, int p2, boolean p3) {
-            assertEquals(new variant_8().booleanTask(p1, p2), p3);
+            assertEquals(new Variant_8().booleanTask(p1, p2), p3);
         }
 
         @DataProvider
@@ -53,7 +51,7 @@ public class testVariant_8 {
 
         @Test(dataProvider = "switchProvider")
         public void switchTest(int p1, int p2, int p3, int p4) {
-            assertEquals(new variant_8().switchTask(p1, p2), new int[]{p3,p4});
+            assertEquals(new Variant_8().switchTask(p1, p2), new int[]{p3,p4});
         }
 
         @DataProvider
@@ -63,14 +61,14 @@ public class testVariant_8 {
 
         @Test(expectedExceptions = AssertionError.class)
         public void switchNegativeTest() {
-            new variant_8().switchTask(29,2);
+            new Variant_8().switchTask(29,2);
         }
 
         ///////////////////////////////////////////////////
 
         @Test(dataProvider = "forProvider")
         public void forTest(int p1, int p2, int p3) {
-            assertEquals(new variant_8().forTask(p1,p2), p3);
+            assertEquals(new Variant_8().forTask(p1,p2), p3);
         }
 
         @DataProvider
@@ -84,7 +82,7 @@ public class testVariant_8 {
 
         @Test(dataProvider = "whileProvider")
         public void whileTest(int p1, int p2) {
-            assertEquals(new variant_8().whileTask(p1), p2);
+            assertEquals(new Variant_8().whileTask(p1), p2);
         }
 
         @DataProvider
@@ -94,7 +92,7 @@ public class testVariant_8 {
 
         @Test(expectedExceptions = AssertionError.class, dataProvider = "negativeWhileProvider")
         public void negativeWhileTest(int a) {
-            new variant_8().whileTask(a);
+            new Variant_8().whileTask(a);
         }
 
         @DataProvider
@@ -105,7 +103,7 @@ public class testVariant_8 {
         //////////////////////////////////////////
         @Test(dataProvider = "arrayProvider")
         public void arrayTest(int[] array, int[] value) {
-            assertEquals(new variant_8().arrayTask(array), value);
+            assertEquals(new Variant_8().arrayTask(array), value);
         }
 
         @DataProvider
@@ -121,7 +119,7 @@ public class testVariant_8 {
 
         @Test(dataProvider = "matrixProvider")
         public void twoDimensionArrayTest(double[][] input, int K, double[] output) {
-            assertEquals(new variant_8().twoDimensionArrayTask(input, K), output);
+            assertEquals(new Variant_8().twoDimensionArrayTask(input, K), output);
         }
 
         @DataProvider

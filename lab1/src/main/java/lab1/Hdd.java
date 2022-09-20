@@ -41,9 +41,7 @@ public class Hdd extends Disk {
             return false;
         Hdd dsk = (Hdd)obj;
 
-        if(!Objects.equals(rotationSpeed,dsk.rotationSpeed) || !Objects.equals(formfactor,dsk.formfactor))
-            return false;
-        return true;
+        return Objects.equals(rotationSpeed, dsk.rotationSpeed) && Objects.equals(formfactor, dsk.formfactor);
     }
     @Override
     public int hashCode(){
@@ -102,6 +100,7 @@ public class Hdd extends Disk {
         /**
          * a method that builds a complete object
          * */
+        @Override
         public Hdd build()
         {
             return new Hdd(this);

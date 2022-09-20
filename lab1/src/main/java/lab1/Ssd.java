@@ -112,6 +112,7 @@ final public class Ssd extends Disk {
         /**
          * a method that builds a complete object
          * */
+        @Override
         public Ssd build()
         {
             return new Ssd(this);

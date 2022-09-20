@@ -1,6 +1,6 @@
 package lab0;
 
-public class variant_8 {
+public class Variant_8 {
 
     /**
      *
@@ -58,8 +58,8 @@ public class variant_8 {
         assert D >= 1 && D <= curMonthCountOfDays : "D is integer that represent correct day of month number M";
         if(D >= 2)
             return new int[]{D-1,M};
-        int nD = 0, nM;
-        nM = (M == 1 ? 12 : M - 1);
+        int nD = 0;
+        int nM = (M == 1 ? 12 : M - 1);
         switch (nM) {
             case 1, 3, 5, 7, 8, 10, 12 -> nD = 31;
             case 2 -> nD = 28;
@@ -74,15 +74,15 @@ public class variant_8 {
      *
      * @param A is integer number
      * @param B is integer number > A
-     * @return sum all integers between A and B
+     * @return product all integers between A and B
      */
     public int forTask(int A, int B) {
         assert A < B: "Arguments are integers A < B";
-        int Product = 1;
+        int product = 1;
         for(int i = A;i <= B;i++)
-            Product *= i;
+            product *= i;
 
-        return Product;
+        return product;
     }
 
 
@@ -116,10 +116,10 @@ public class variant_8 {
             if (v % 2 == 1)
                 sizeOddArray++;
         int[] oddArray = new int[sizeOddArray];
-        int headOddArray = 0;
+        int i = 0;
         for (int v : array)
             if (v % 2 == 1)
-                oddArray[headOddArray++] = v;
+                oddArray[i++] = v;
         return oddArray;
     }
 
@@ -136,16 +136,11 @@ public class variant_8 {
                 minRowSize = arr.length;
         assert 0 <= K && K <= minRowSize : "out of range";
         double[] column = new double[matrix.length];
-        int headColumn = 0;
+        int i = 0;
         for (double[] arr : matrix)
-            column[headColumn++] = arr[K];
+            column[i++] = arr[K];
 
         return column;
-    }
-
-    public static void main(String... strings) {
-        System.out.println("Start of zero lab");
-        System.out.println("Done!!!");
     }
 
 }

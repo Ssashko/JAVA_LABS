@@ -6,8 +6,8 @@ public class Main {
         Hdd.BuilderHdd bhbuilder = new Hdd.BuilderHdd();
         bhbuilder.setFormfactor(FormFactorHdd._2_5)
                 .setRotationSpeed(7200)
-                .setVendor("Hitachi")
                 .setVid(1321)
+                .setVendor("Hitachi")
                 .setDid(1414)
                 .setCapacity(1024L*1024*1024*1024)
                 .setLinearSpeedOfRead(1024*1024*130)
@@ -15,7 +15,7 @@ public class Main {
                 .setRandomSpeedOfRead(1024*1024*3)
                 .setRandomSpeedOfWrite(1024*1024*3)
                 .setInterface_(PCInterfaces.SATA);
-        Hdd bd = bhbuilder.build();
+        Hdd bd = (Hdd)bhbuilder.build();
         System.out.print("\n\nHDD drive:\n\n");
         System.out.printf("\nHDD drive hash: %d\n", bd.hashCode());
         System.out.print(bd);
@@ -32,7 +32,7 @@ public class Main {
                 .setRandomSpeedOfRead(1024*1024*550)
                 .setRandomSpeedOfWrite(1024*1024*550)
                 .setInterface_(PCInterfaces.PCIE);
-        Ssd ssd = ssdbuilder.build();
+        Ssd ssd = (Ssd)ssdbuilder.build();
         System.out.print("\n\nSSD drive:\n\n");
         System.out.printf("\nSSD drive hash: %d\n", ssd.hashCode());
         System.out.print(ssd);

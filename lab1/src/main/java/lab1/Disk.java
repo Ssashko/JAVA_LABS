@@ -236,6 +236,7 @@ abstract public class Disk {
         /**
          * a method that checks the correctness of fields and their completeness
          * */
+        abstract public Disk build();
         public boolean validate (){
             boolean result = !vendor.isEmpty() && !vendor.trim().isEmpty();
             result = result && vid >= 0 && did >= 0 && capacity >= 0 && interface_ != PCInterfaces.None;
