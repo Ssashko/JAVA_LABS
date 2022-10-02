@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="lab0.TestVariant_8" tests="29" skipped="0" failures="0" errors="0" timestamp="2022-09-20T08:02:02" hostname="DESKTOP-DM2UTUE" time="0.048">
+  <properties/>
+  <testcase name="arrayTest[0]([I@402c4085, [I@6fa51cd4)" classname="lab0.TestVariant_8" time="0.005"/>
+  <testcase name="arrayTest[1]([I@70ed52de, [I@496bc455)" classname="lab0.TestVariant_8" time="0.001"/>
+  <testcase name="arrayTest[2]([I@7188af83, [I@6be968ce)" classname="lab0.TestVariant_8" time="0.0"/>
+  <testcase name="booleanTest[0](5, 4, false)" classname="lab0.TestVariant_8" time="0.002"/>
+  <testcase name="booleanTest[1](1, 7, true)" classname="lab0.TestVariant_8" time="0.0"/>
+  <testcase name="booleanTest[2](2, 2, false)" classname="lab0.TestVariant_8" time="0.0"/>
+  <testcase name="forTest[0](3, 4, 12)" classname="lab0.TestVariant_8" time="0.002"/>
+  <testcase name="forTest[1](1, 10, 3628800)" classname="lab0.TestVariant_8" time="0.001"/>
+  <testcase name="forTest[2](-1, 1, 0)" classname="lab0.TestVariant_8" time="0.0"/>
+  <testcase name="ifTest[0](7, 8, 8, 7)" classname="lab0.TestVariant_8" time="0.003"/>
+  <testcase name="ifTest[1](10, 6, 10, 6)" classname="lab0.TestVariant_8" time="0.0"/>
+  <testcase name="ifTest[2](0, 0, 0, 0)" classname="lab0.TestVariant_8" time="0.001"/>
+  <testcase name="integerTest[0](69, 96)" classname="lab0.TestVariant_8" time="0.002"/>
+  <testcase name="integerTest[1](12, 21)" classname="lab0.TestVariant_8" time="0.0"/>
+  <testcase name="integerTest[2](88, 88)" classname="lab0.TestVariant_8" time="0.0"/>
+  <testcase name="negativeIntegerTest" classname="lab0.TestVariant_8" time="0.0"/>
+  <testcase name="negativeWhileTest[0](-1)" classname="lab0.TestVariant_8" time="0.001"/>
+  <testcase name="negativeWhileTest[1](0)" classname="lab0.TestVariant_8" time="0.001"/>
+  <testcase name="negativeWhileTest[2](-99)" classname="lab0.TestVariant_8" time="0.0"/>
+  <testcase name="switchNegativeTest" classname="lab0.TestVariant_8" time="0.0"/>
+  <testcase name="switchTest[0](1, 3, 28, 2)" classname="lab0.TestVariant_8" time="0.003"/>
+  <testcase name="switchTest[1](2, 1, 1, 1)" classname="lab0.TestVariant_8" time="0.0"/>
+  <testcase name="switchTest[2](1, 1, 31, 12)" classname="lab0.TestVariant_8" time="0.0"/>
+  <testcase name="twoDimensionArrayTest[0]([[D@7bd7d6d6, 2, [D@43f02ef2)" classname="lab0.TestVariant_8" time="0.003"/>
+  <testcase name="twoDimensionArrayTest[1]([[D@6e535154, 0, [D@15a34df2)" classname="lab0.TestVariant_8" time="0.001"/>
+  <testcase name="whileTest[0](42, 6)" classname="lab0.TestVariant_8" time="0.0"/>
+  <testcase name="whileTest[1](50, 7)" classname="lab0.TestVariant_8" time="0.001"/>
+  <testcase name="whileTest[2](97, 9)" classname="lab0.TestVariant_8" time="0.0"/>
+  <testcase name="whileTest[3](149, 12)" classname="lab0.TestVariant_8" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

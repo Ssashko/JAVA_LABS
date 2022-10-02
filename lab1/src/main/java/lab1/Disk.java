@@ -56,23 +56,23 @@ abstract public class Disk {
     @Override
     public String toString(){
         String result = "";
-        result += "vendor: " + vendor;
-        result += "\nvendor id: " + String.valueOf(vid);
-        result += "\ndisk id: " + String.valueOf(did);
-        result += "\ncapacity: " + String.valueOf(capacity) + " bytes";
-        result += "\ninterface: ";
+        result = String.join("",result, "vendor: ", vendor);
+        result = String.join("",result,"\nvendor id: ", String.valueOf(vid));
+        result = String.join("",result,"\ndisk id: ", String.valueOf(did));
+        result = String.join("",result,"\ncapacity: ", String.valueOf(capacity), " bytes");
+        result = String.join("",result,"\ninterface: ");
         switch (interface_)
         {
-            case IDE -> result += "IDE";
-            case USB -> result += "USB";
-            case PCIE -> result += "PCI-express";
-            case PCI -> result += "PCI";
-            case SATA -> result += "SATA";
+            case IDE -> result = String.join("",result,"IDE");
+            case USB -> result = String.join("",result,"USB");
+            case PCIE -> result = String.join("",result,"PCI-express");
+            case PCI -> result = String.join("",result,"PCI");
+            case SATA -> result = String.join("",result,"SATA");
         }
-        result += "\nlinearSpeedOfWrite: " + String.valueOf(linearSpeedOfWrite) + " bytes per second";
-        result += "\nlinearSpeedOfRead: " + String.valueOf(linearSpeedOfRead) + " bytes per second";
-        result += "\nrandomSpeedOfWrite: " + String.valueOf(randomSpeedOfWrite) + " bytes per second";
-        result += "\nrandomSpeedOfRead: " + String.valueOf(randomSpeedOfRead) + " bytes per second";
+        result = String.join("",result,"\nlinearSpeedOfWrite: ", String.valueOf(linearSpeedOfWrite), " bytes per second");
+        result = String.join("",result,"\nlinearSpeedOfRead: ", String.valueOf(linearSpeedOfRead), " bytes per second");
+        result = String.join("",result,"\nrandomSpeedOfWrite: ", String.valueOf(randomSpeedOfWrite), " bytes per second");
+        result = String.join("",result,"\nrandomSpeedOfRead: ", String.valueOf(randomSpeedOfRead), " bytes per second");
         return result;
     }
 
@@ -236,13 +236,13 @@ abstract public class Disk {
         /**
          * a method that checks the correctness of fields and their completeness
          * */
-        abstract public Disk build();
         public boolean validate (){
             boolean result = !vendor.isEmpty() && !vendor.trim().isEmpty();
             result = result && vid >= 0 && did >= 0 && capacity >= 0 && interface_ != PCInterfaces.None;
             result = result && linearSpeedOfWrite >= 0 && linearSpeedOfRead >= 0 && randomSpeedOfWrite >= 0 && randomSpeedOfRead >= 0;
             return result;
         }
+        abstract public Disk build();
 
     }
 }

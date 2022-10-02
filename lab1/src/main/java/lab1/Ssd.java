@@ -28,6 +28,8 @@ final public class Ssd extends Disk {
      * */
     Ssd(BuilderSsd bs){
         super(bs);
+        if(!bs.validate())
+            throw new IllegalArgumentException("incorrect Ssd builder");
         this.memoryType = bs.memoryType;
         this.formfactor = bs.formfactor;
     }
@@ -46,19 +48,19 @@ final public class Ssd extends Disk {
     @Override
     public String toString(){
         String result = super.toString();
-        result += "\nmemory type: ";
+        result = String.join("",result,"\nmemory type: ");
         switch (memoryType)
         {
-            case SLS -> result += "SLS";
-            case MLS -> result += "MLS";
-            case TLS -> result += "TLS";
-            case QLS -> result += "QLS";
+            case SLS -> result = String.join("",result,"SLS");
+            case MLS -> result = String.join("",result,"MLS");
+            case TLS -> result = String.join("",result,"TLS");
+            case QLS -> result = String.join("",result,"QLS");
         }
-        result += "\nform factor: ";
+        result = String.join("",result,"\nform factor: ");
         switch (formfactor)
         {
-            case _2_5 -> result += "2.5\"";
-            case M_2 -> result += "M.2\"";
+            case _2_5 -> result = String.join("",result,"2.5\"");
+            case M_2 -> result = String.join("",result,"M.2\"");
         }
         return result;
     }

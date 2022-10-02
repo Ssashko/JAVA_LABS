@@ -21,6 +21,8 @@ public class Hdd extends Disk {
      * */
     Hdd(BuilderHdd bh) {
         super(bh);
+        if(!bh.validate())
+            throw new IllegalArgumentException("incorrect Hdd builder");
         this.rotationSpeed = bh.rotationSpeed;
         this.formfactor = bh.formfactor;
     }
@@ -60,13 +62,13 @@ public class Hdd extends Disk {
     @Override
     public String toString(){
         String result = super.toString();
-        result += "\nrotation speed: " + rotationSpeed + " RPM";
+        result = String.join("",result,"\nrotation speed: ", String.valueOf(rotationSpeed), " RPM");
 
-        result += "\nform factor: ";
+        result = result + "\nform factor: ";
         switch (formfactor)
         {
-            case _2_5 -> result += "2.5\"";
-            case _3_5 -> result += "3.5\"";
+            case _2_5 -> result = String.join("",result,"2.5\"");
+            case _3_5 -> result = String.join("",result,"3.5\"");
         }
         return result;
     }
