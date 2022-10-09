@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestSerializable" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-10-09T12:38:22" hostname="DESKTOP-DM2UTUE" time="5.984">
+  <properties/>
+  <testcase name="SingleObjectTest[0](class lab2classes.Point, lab2.SerializableTxt@5032714f, test, lab2classes.Point@48bb62)" classname="TestSerializable" time="5.762"/>
+  <testcase name="SingleObjectTest[1](class lab2classes.Circle, lab2.SerializableJSON@1033576a, test, lab2classes.Circle@303cf2ba)" classname="TestSerializable" time="0.155"/>
+  <testcase name="SingleObjectTest[2](class lab2classes.Rectangle, lab2.SerializableXml@25bfcafd, test, lab2classes.Rectangle@4b6690c0)" classname="TestSerializable" time="0.063"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
