@@ -4,71 +4,66 @@ package lab2;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class SerializableJSON<T> implements Serializable<T> {
-    /*
-    @Override
-    public void toFile(List<T> entities, String fileName) throws FileNotFoundException, JsonProcessingException {
-        PrintWriter pw = null;
-        try {
-            File file = new File(String.join(".",fileName,"json"));
-            pw = new PrintWriter(file);
-            ObjectMapper mapper = new ObjectMapper();
-            String listToJson = mapper.writeValueAsString(entities);
-            pw.print(listToJson);
-        } catch (Exception exception) {
-            System.out.println(exception.getMessage());
-        } finally {
-            if(pw != null)
-                pw.close();
-        }
+    private final Class<T> type;
+    public SerializableJSON(Class<T> _type) {
+        type = _type;
     }
-    */
     @Override
-    public void toFile(T entity, String fileName) {
+    public Class<T> getGenericClass() {
+        return type;
+    }
+
+    @Override
+    public void listToFile(List<T> entity, String fileName) throws IOException {
         try {
 
             ObjectMapper mapper = new ObjectMapper();
-
             mapper.writeValue(new File(String.join(".",fileName,"json")), entity);
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
         }
     }
-/*
+
     @Override
-    public List<T> listFromFile(String fileName, Class<T> cl) throws FileNotFoundException, JsonProcessingException {
-        Scanner sc = null;
+    public void toFile(T entity, String fileName) {
         try {
-            File file = new File(String.join(".",fileName,"json"));
-            sc = new Scanner(file);
-            String jsondata = "";
-            while (sc.hasNext())
-                jsondata = String.join(jsondata, sc.nextLine());
 
             ObjectMapper mapper = new ObjectMapper();
-
-            return mapper.readValue(jsondata, List.class);
+            mapper.writeValue(new File(String.join(".",fileName,"json")), entity);
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
-        } finally {
-            if(sc != null)
-                sc.close();
+        }
+    }
+
+    @Override
+    public List<T> listFromFile(String fileName) throws FileNotFoundException {
+        try {
+            String json = new String(Files.readAllBytes(Paths.get(String.join(".",fileName,"json"))));
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+            JavaType type = mapper.getTypeFactory().constructCollectionType(List.class, getGenericClass());
+            return mapper.readValue(json, type);
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
         }
         return null;
     }
-*/
+
     @Override
-    public T fromFile(Class<T> cl, String fileName) throws IOException {
+    public T fromFile(String fileName) throws IOException {
         try {
             String json = new String(Files.readAllBytes(Paths.get(String.join(".",fileName,"json"))));
             ObjectMapper mapper = new ObjectMapper();
             mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-            return mapper.readValue(json, cl);
+            return mapper.readValue(json, getGenericClass());
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
         }

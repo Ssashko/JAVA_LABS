@@ -2,7 +2,7 @@ package lab2classes;
 
 import java.util.Objects;
 
-public class Circle implements Figure{
+public class Circle implements Figure {
     private Point center;
     private Point circlePoint;
 

@@ -1,9 +1,8 @@
 package lab2classes;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-public interface Figure extends Serializable {
+public interface Figure {
     String call();
     double getSquare();
     double getPerimeter();

@@ -2,7 +2,7 @@ package lab2classes;
 
 import java.util.Objects;
 
-public class Rectangle implements Figure{
+public class Rectangle implements Figure {
     private Point leftBottom;
     private Point rightTop;
     public Rectangle()

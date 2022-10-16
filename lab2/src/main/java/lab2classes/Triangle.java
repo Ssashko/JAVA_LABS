@@ -2,7 +2,7 @@ package lab2classes;
 
 import java.util.Objects;
 
-public class Triangle implements Figure{
+public class Triangle implements Figure {
     private Point[] p;
 
     public Triangle()
