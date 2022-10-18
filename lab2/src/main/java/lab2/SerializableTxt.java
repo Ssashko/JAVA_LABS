@@ -10,16 +10,21 @@ import java.util.*;
 
 public class SerializableTxt<T> implements Serializable<T>{
     private final Class<T> type;
-    public SerializableTxt(Class<T> _type) {
-        type = _type;
+    public SerializableTxt(Class<T> type) {
+        this.type = type;
     }
+
     @Override
     public Class<T> getGenericClass() {
         return type;
     }
 
+    /**
+     * the method works only for objects without aggregation and inheritance
+     * transferred file name should be without extensions
+     * */
     @Override
-    public void listToFile(List<T> entity, String fileName) throws IOException, IllegalAccessException {
+    public void listToFile(List<T> entities, String fileName) throws IOException, IllegalAccessException {
         FileWriter fileWriter = new FileWriter(String.join(".",fileName,"csv"));
         PrintWriter printWriter = new PrintWriter(fileWriter);
 
@@ -33,11 +38,11 @@ public class SerializableTxt<T> implements Serializable<T>{
         }
         printWriter.print("\n");
 
-        for(T _entity : entity) {
+        for(T entity : entities) {
             previousSeparator = "";
             for (Field classField : classFields) {
                 classField.setAccessible(true);
-                Object value = classField.get(_entity);
+                Object value = classField.get(entity);
                 printWriter.print(String.join(previousSeparator, "", value.toString()));
                 previousSeparator = ",";
             }
@@ -45,7 +50,10 @@ public class SerializableTxt<T> implements Serializable<T>{
         }
         printWriter.close();
     }
-
+    /**
+     * the method works only for objects without aggregation and inheritance
+     * transferred file name should be without extensions
+     * */
     @Override
     public void toFile(T entity, String fileName) throws IOException, IllegalAccessException {
         FileWriter fileWriter = new FileWriter(String.join(".",fileName,"csv"));
@@ -73,7 +81,10 @@ public class SerializableTxt<T> implements Serializable<T>{
 
         printWriter.close();
     }
-
+    /**
+     * the method works only for objects without aggregation and inheritance
+     * transferred file name should be without extensions
+     * */
     @Override
     public List<T> listFromFile(String fileName) throws IOException, ParseException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         String csv = new String(Files.readAllBytes(Paths.get(String.join(".",fileName,"csv"))));
@@ -130,7 +141,10 @@ public class SerializableTxt<T> implements Serializable<T>{
 
         return obj;
     }
-
+    /**
+     * the method works only for objects without aggregation and inheritance
+     * transferred file name should be without extensions
+     * */
     @Override
     public T fromFile(String fileName) throws IOException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, ParseException {
         String csv = new String(Files.readAllBytes(Paths.get(String.join(".",fileName,"csv"))));

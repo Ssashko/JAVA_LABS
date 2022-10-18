@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,54 +20,42 @@ public class SerializableJSON<T> implements Serializable<T> {
     public Class<T> getGenericClass() {
         return type;
     }
-
+    /**
+     * transferred file name should be without extensions
+     * */
     @Override
     public void listToFile(List<T> entity, String fileName) throws IOException {
-        try {
-
-            ObjectMapper mapper = new ObjectMapper();
-            mapper.writeValue(new File(String.join(".",fileName,"json")), entity);
-        } catch (Exception exception) {
-            System.out.println(exception.getMessage());
-        }
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.writeValue(new File(String.join(".",fileName,"json")), entity);
     }
-
+    /**
+     * transferred file name should be without extensions
+     * */
     @Override
-    public void toFile(T entity, String fileName) {
-        try {
-
-            ObjectMapper mapper = new ObjectMapper();
-            mapper.writeValue(new File(String.join(".",fileName,"json")), entity);
-        } catch (Exception exception) {
-            System.out.println(exception.getMessage());
-        }
+    public void toFile(T entity, String fileName) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.writeValue(new File(String.join(".",fileName,"json")), entity);
     }
-
+    /**
+     * transferred file name should be without extensions
+     * */
     @Override
-    public List<T> listFromFile(String fileName) throws FileNotFoundException {
-        try {
-            String json = new String(Files.readAllBytes(Paths.get(String.join(".",fileName,"json"))));
-            ObjectMapper mapper = new ObjectMapper();
-            mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-            JavaType type = mapper.getTypeFactory().constructCollectionType(List.class, getGenericClass());
-            return mapper.readValue(json, type);
-        } catch (Exception exception) {
-            System.out.println(exception.getMessage());
-        }
-        return null;
+    public List<T> listFromFile(String fileName) throws IOException {
+        String json = new String(Files.readAllBytes(Paths.get(String.join(".",fileName,"json"))));
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        JavaType type = mapper.getTypeFactory().constructCollectionType(List.class, getGenericClass());
+        return mapper.readValue(json, type);
     }
-
+    /**
+     * transferred file name should be without extensions
+     * */
     @Override
     public T fromFile(String fileName) throws IOException {
-        try {
-            String json = new String(Files.readAllBytes(Paths.get(String.join(".",fileName,"json"))));
-            ObjectMapper mapper = new ObjectMapper();
-            mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        String json = new String(Files.readAllBytes(Paths.get(String.join(".",fileName,"json"))));
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-            return mapper.readValue(json, getGenericClass());
-        } catch (Exception exception) {
-            System.out.println(exception.getMessage());
-        }
-        return null;
+        return mapper.readValue(json, getGenericClass());
     }
 }

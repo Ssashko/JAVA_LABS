@@ -9,7 +9,6 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -35,21 +34,21 @@ public class TestSerializable {
 
         return new Object[][] {
 
-                {new SerializableXml<>(Circle.class), "test",new ArrayList<Circle>(Arrays.asList(
+                {new SerializableXml<>(Circle.class), "test",Arrays.asList(
                         new Circle(new Point(1,2),new Point(3,8)),
                         new Circle(new Point(0,0),new Point(1,2)),
                         new Circle(new Point(-1,-2),new Point(3,8))
-                ))},
-                {new SerializableTxt<>(Point.class), "test",new ArrayList<Point>(Arrays.asList(
+                )},
+                {new SerializableTxt<>(Point.class), "test",Arrays.asList(
                         new Point(1,2),
                         new Point(3,8),
                         new Point(0,0)
-                ))},
-                {new SerializableJSON<>(Triangle.class), "test",new ArrayList<Triangle>(Arrays.asList(
+                )},
+                {new SerializableJSON<>(Triangle.class), "test",Arrays.asList(
                         new Triangle(new Point(1,2), new Point(-1,-2), new Point(0,0)),
                         new Triangle(new Point(3,4), new Point(-4,-3), new Point(0,0)),
                         new Triangle(new Point(1,2), new Point(-1,-2), new Point(7,8))
-                ))},
+                )},
         };
     }
 
