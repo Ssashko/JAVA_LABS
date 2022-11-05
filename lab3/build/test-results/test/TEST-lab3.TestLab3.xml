@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="lab3.TestLab3" tests="18" skipped="0" failures="0" errors="0" timestamp="2022-11-05T20:34:21" hostname="DESKTOP-DM2UTUE" time="0.033">
+  <properties/>
+  <testcase name="testCapacityOfRam[0](lab3.Motherboard@268f106e, 8192)" classname="lab3.TestLab3" time="0.006"/>
+  <testcase name="testCapacityOfRam[1](lab3.Motherboard@6d60fe40, 4096)" classname="lab3.TestLab3" time="0.0"/>
+  <testcase name="testCapacityOfRam[2](lab3.Motherboard@23e84203, 4096)" classname="lab3.TestLab3" time="0.0"/>
+  <testcase name="testCompareTo[0](lab3.Motherboard@268f106e, lab3.Motherboard@6d60fe40, -1)" classname="lab3.TestLab3" time="0.004"/>
+  <testcase name="testCompareTo[1](lab3.Motherboard@6d60fe40, lab3.Motherboard@23e84203, 1)" classname="lab3.TestLab3" time="0.0"/>
+  <testcase name="testCompareTo[2](lab3.Motherboard@23e84203, lab3.Motherboard@23e84203, 0)" classname="lab3.TestLab3" time="0.001"/>
+  <testcase name="testFrequencyOfRams[0](lab3.Motherboard@268f106e, 1333)" classname="lab3.TestLab3" time="0.001"/>
+  <testcase name="testFrequencyOfRams[1](lab3.Motherboard@6d60fe40, 3200)" classname="lab3.TestLab3" time="0.0"/>
+  <testcase name="testFrequencyOfRams[2](lab3.Motherboard@23e84203, 3200)" classname="lab3.TestLab3" time="0.0"/>
+  <testcase name="testIsRamModulesCompatible[0](lab3.Motherboard@268f106e, true)" classname="lab3.TestLab3" time="0.003"/>
+  <testcase name="testIsRamModulesCompatible[1](lab3.Motherboard@6d60fe40, true)" classname="lab3.TestLab3" time="0.0"/>
+  <testcase name="testIsRamModulesCompatible[2](lab3.Motherboard@23e84203, true)" classname="lab3.TestLab3" time="0.0"/>
+  <testcase name="testSsdCount[0](lab3.Motherboard@268f106e, 1)" classname="lab3.TestLab3" time="0.001"/>
+  <testcase name="testSsdCount[1](lab3.Motherboard@6d60fe40, 1)" classname="lab3.TestLab3" time="0.0"/>
+  <testcase name="testSsdCount[2](lab3.Motherboard@23e84203, 0)" classname="lab3.TestLab3" time="0.001"/>
+  <testcase name="testSummaryCapacityOfDisks[0](lab3.Motherboard@268f106e, 1152)" classname="lab3.TestLab3" time="0.0"/>
+  <testcase name="testSummaryCapacityOfDisks[1](lab3.Motherboard@6d60fe40, 128)" classname="lab3.TestLab3" time="0.0"/>
+  <testcase name="testSummaryCapacityOfDisks[2](lab3.Motherboard@23e84203, 1024)" classname="lab3.TestLab3" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
