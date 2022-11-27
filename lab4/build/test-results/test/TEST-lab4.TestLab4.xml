@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="lab4.TestLab4" tests="15" skipped="0" failures="0" errors="0" timestamp="2022-11-14T18:37:08" hostname="DESKTOP-DM2UTUE" time="0.526">
+<testsuite name="lab4.TestLab4" tests="15" skipped="0" failures="0" errors="0" timestamp="2022-11-15T08:50:56" hostname="DESKTOP-DM2UTUE" time="0.532">
   <properties/>
-  <testcase name="testCpuBuilder[0](lab4.Cpu$CpuBuilder@6e9a5ed8, true)" classname="lab4.TestLab4" time="0.187"/>
-  <testcase name="testCpuBuilder[1](lab4.Cpu$CpuBuilder@3d3ba765, false)" classname="lab4.TestLab4" time="0.012"/>
-  <testcase name="testCpuBuilder[2](lab4.Cpu$CpuBuilder@278bb07e, true)" classname="lab4.TestLab4" time="0.01"/>
-  <testcase name="testHddBuilder[0](lab4.Hdd$BuilderHdd@17a87e37, true)" classname="lab4.TestLab4" time="0.03"/>
-  <testcase name="testHddBuilder[1](lab4.Hdd$BuilderHdd@3dd1dc90, true)" classname="lab4.TestLab4" time="0.034"/>
-  <testcase name="testHddBuilder[2](lab4.Hdd$BuilderHdd@4c398c80, false)" classname="lab4.TestLab4" time="0.108"/>
-  <testcase name="testMotherboardBuilder[0](lab4.Motherboard$buildMotherboard@6b9ce1bf, true)" classname="lab4.TestLab4" time="0.01"/>
-  <testcase name="testMotherboardBuilder[1](lab4.Motherboard$buildMotherboard@13e3c1c7, false)" classname="lab4.TestLab4" time="0.007"/>
-  <testcase name="testMotherboardBuilder[2](lab4.Motherboard$buildMotherboard@60f7cc1d, false)" classname="lab4.TestLab4" time="0.007"/>
-  <testcase name="testRamBuilder[0](lab4.Ram$RamBuilder@4f2c9ba6, true)" classname="lab4.TestLab4" time="0.01"/>
-  <testcase name="testRamBuilder[1](lab4.Ram$RamBuilder@4a335fa8, true)" classname="lab4.TestLab4" time="0.007"/>
-  <testcase name="testRamBuilder[2](lab4.Ram$RamBuilder@5ed731d0, false)" classname="lab4.TestLab4" time="0.007"/>
-  <testcase name="testSsdBuilder[0](lab4.Ssd$BuilderSsd@72445aba, true)" classname="lab4.TestLab4" time="0.014"/>
-  <testcase name="testSsdBuilder[1](lab4.Ssd$BuilderSsd@6d24ffa1, true)" classname="lab4.TestLab4" time="0.011"/>
-  <testcase name="testSsdBuilder[2](lab4.Ssd$BuilderSsd@3f1c5af9, false)" classname="lab4.TestLab4" time="0.051"/>
-  <system-out><![CDATA[VENDOR : must not be null
-L1CACHECAPACITY : must not be null
+  <testcase name="testCpuBuilder[0](lab4.Cpu$CpuBuilder@268f106e, true)" classname="lab4.TestLab4" time="0.226"/>
+  <testcase name="testCpuBuilder[1](lab4.Cpu$CpuBuilder@784b990c, false)" classname="lab4.TestLab4" time="0.018"/>
+  <testcase name="testCpuBuilder[2](lab4.Cpu$CpuBuilder@246f8b8b, true)" classname="lab4.TestLab4" time="0.013"/>
+  <testcase name="testHddBuilder[0](lab4.Hdd$BuilderHdd@4b3a45f1, true)" classname="lab4.TestLab4" time="0.019"/>
+  <testcase name="testHddBuilder[1](lab4.Hdd$BuilderHdd@320de594, true)" classname="lab4.TestLab4" time="0.015"/>
+  <testcase name="testHddBuilder[2](lab4.Hdd$BuilderHdd@fb9c7aa, false)" classname="lab4.TestLab4" time="0.069"/>
+  <testcase name="testMotherboardBuilder[0](lab4.Motherboard$buildMotherboard@590c73d3, true)" classname="lab4.TestLab4" time="0.01"/>
+  <testcase name="testMotherboardBuilder[1](lab4.Motherboard$buildMotherboard@6c6c5427, false)" classname="lab4.TestLab4" time="0.008"/>
+  <testcase name="testMotherboardBuilder[2](lab4.Motherboard$buildMotherboard@1b065145, false)" classname="lab4.TestLab4" time="0.006"/>
+  <testcase name="testRamBuilder[0](lab4.Ram$RamBuilder@24d4d7c9, true)" classname="lab4.TestLab4" time="0.01"/>
+  <testcase name="testRamBuilder[1](lab4.Ram$RamBuilder@76f7d241, true)" classname="lab4.TestLab4" time="0.009"/>
+  <testcase name="testRamBuilder[2](lab4.Ram$RamBuilder@269f4bad, false)" classname="lab4.TestLab4" time="0.009"/>
+  <testcase name="testSsdBuilder[0](lab4.Ssd$BuilderSsd@4763c727, true)" classname="lab4.TestLab4" time="0.02"/>
+  <testcase name="testSsdBuilder[1](lab4.Ssd$BuilderSsd@4f2613d1, true)" classname="lab4.TestLab4" time="0.015"/>
+  <testcase name="testSsdBuilder[2](lab4.Ssd$BuilderSsd@2b491fee, false)" classname="lab4.TestLab4" time="0.059"/>
+  <system-out><![CDATA[L3CACHECAPACITY : must not be null
 HYPERTHREADING : must not be null
-CORECOUNT : must not be null
-SOKETTYPE : must not be null
-PIP : must not be null
-L2CACHECAPACITY : must not be null
-L3CACHECAPACITY : must not be null
 VID : must not be null
+L1CACHECAPACITY : must not be null
 NAME : must not be null
+CORECOUNT : must not be null
+PIP : must not be null
 FREQUENCY : must not be null
+L2CACHECAPACITY : must not be null
+VENDOR : must not be null
+SOKETTYPE : must not be null
 
 OK
 NAME : incorrect vendor name
@@ -35,21 +35,21 @@ HYPERTHREADING : must not be null
 LINEARSPEEDOFREAD : must not be null
 FORMFACTOR : must not be null
 ROTATIONSPEED : must not be null
-INTERFACE_ : must not be null
-RANDOMSPEEDOFREAD : must not be null
-VID : must not be null
-VENDOR : must not be null
-RANDOMSPEEDOFWRITE : must not be null
 LINEARSPEEDOFWRITE : must not be null
-CAPACITY : must not be null
 DID : must not be null
-
-LINEARSPEEDOFREAD : must not be null
-RANDOMSPEEDOFREAD : must not be null
-VENDOR : incorrect vendor name
 CAPACITY : must not be null
-FORMFACTOR : must not be null
+VENDOR : must not be null
+INTERFACE_ : must not be null
+RANDOMSPEEDOFWRITE : must not be null
+VID : must not be null
+RANDOMSPEEDOFREAD : must not be null
+
 LINEARSPEEDOFWRITE : must not be null
+FORMFACTOR : must not be null
+CAPACITY : must not be null
+RANDOMSPEEDOFREAD : must not be null
+LINEARSPEEDOFREAD : must not be null
+VENDOR : incorrect vendor name
 
 OK
 VID : must not be null
@@ -58,33 +58,33 @@ VENDOR : must not be null
 
 OK
 OK
-CAPACITY : must not be null
+VID : must not be null
 PID : must not be null
 RANK : must not be null
-FREQUENCY : must not be null
-RAMTYPE : must not be null
 VENDOR : must not be null
-VID : must not be null
 RAMFORMFACTOR : must not be null
+RAMTYPE : must not be null
+CAPACITY : must not be null
+FREQUENCY : must not be null
 
 FREQUENCY : frequency must be positive number
 
 OK
-RANDOMSPEEDOFREAD : must not be null
-INTERFACE_ : must not be null
+LINEARSPEEDOFREAD : must not be null
 VID : must not be null
+DID : must not be null
 CAPACITY : must not be null
 VENDOR : must not be null
-LINEARSPEEDOFWRITE : must not be null
+INTERFACE_ : must not be null
 RANDOMSPEEDOFWRITE : must not be null
-DID : must not be null
-LINEARSPEEDOFREAD : must not be null
+LINEARSPEEDOFWRITE : must not be null
+RANDOMSPEEDOFREAD : must not be null
 
 DID : disk id must be 5-digits number
 
 OK
 ]]></system-out>
-  <system-err><![CDATA[Nov 14, 2022 8:37:08 PM org.hibernate.validator.internal.util.Version <clinit>
+  <system-err><![CDATA[Nov 15, 2022 10:50:56 AM org.hibernate.validator.internal.util.Version <clinit>
 INFO: HV000001: Hibernate Validator 6.0.16.Final
 ]]></system-err>
 </testsuite>

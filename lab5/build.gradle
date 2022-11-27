@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.0.4.RELEASE'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+    implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: '6.0.16.Final'
+    implementation group: 'javax.el', name: 'javax.el-api', version: '3.0.0'
+    implementation group: 'org.glassfish', name: 'javax.el', version: '3.0.0'
+    
+    testImplementation group: 'org.testng', name: 'testng', version: '7.6.1'
+
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.5.0'
+
+}
+
+test {
+    useTestNG()
+}
