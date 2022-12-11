@@ -21,6 +21,8 @@ public class TestLab6 {
 
         Connection connect = test.getConnection();
 
+        ServiceCPU.setConnection(connect);
+
         Cpu CoreI7_4770K = new Cpu.CpuBuilder()
                 .setCoreCount(4)
                 .setFrequency(4L * 1000 * 1000 * 1000)
@@ -50,14 +52,14 @@ public class TestLab6 {
                 .build();
 
         for(int i = 0;i < 10;i++) {
-            ServiceCPU.createCPU(connect, CoreI7_4770K);
-            ServiceCPU.createCPU(connect, CoreI7_8700K);
+            ServiceCPU.createCPU(CoreI7_4770K);
+            ServiceCPU.createCPU(CoreI7_8700K);
         }
-        List<UniqueCPU> set = ServiceCPU.getCPU(connect);
+        List<UniqueCPU> set = ServiceCPU.getCPU();
 
         for(UniqueCPU cpu : set) {
 
-            ServiceCPU.updateCPU(connect, new UniqueCPU(new Cpu.CpuBuilder()
+            ServiceCPU.updateCPU(new UniqueCPU(new Cpu.CpuBuilder()
                     .setCoreCount(8)
                     .setFrequency(4100L * 1000 * 1000)
                     .setHyperThreading(true)
@@ -73,7 +75,7 @@ public class TestLab6 {
         }
 
         for(UniqueCPU el : set)
-            ServiceCPU.deleteCPU(connect,el.getId());
+            ServiceCPU.deleteCPU(el.getId());
 
         connect.close();
     }
@@ -84,6 +86,8 @@ public class TestLab6 {
         DBService test = new DBService("jdbc:postgresql://localhost:5432/java","postgres","root");
 
         Connection connect = test.getConnection();
+
+        ServiceRAM.setConnection(connect);
 
         Ram ram = new Ram.RamBuilder()
                 .setPid(97763)
@@ -97,13 +101,13 @@ public class TestLab6 {
                 .build();
 
         for(int i = 0;i < 10;i++) {
-            ServiceRAM.createRAM(connect,ram);
+            ServiceRAM.createRAM(ram);
         }
-        List<UniqueRAM> set = ServiceRAM.getRAM(connect);
+        List<UniqueRAM> set = ServiceRAM.getRAM();
 
         for(UniqueRAM cpu : set) {
 
-            ServiceRAM.updateRAM(connect, new UniqueRAM(new Ram.RamBuilder()
+            ServiceRAM.updateRAM(new UniqueRAM(new Ram.RamBuilder()
                     .setPid(97763)
                     .setCapacity(4L * 1024 * 1024 * 1024)
                     .setFrequency(3200L * 1000 * 1000)
@@ -116,7 +120,7 @@ public class TestLab6 {
         }
 
         for(UniqueRAM el : set)
-            ServiceRAM.deleteRAM(connect,el.getId());
+            ServiceRAM.deleteRAM(el.getId());
         connect.close();
     }
 
@@ -125,6 +129,8 @@ public class TestLab6 {
         DBService test = new DBService("jdbc:postgresql://localhost:5432/java","postgres","root");
 
         Connection connect = test.getConnection();
+
+        ServiceHDD.setConnection(connect);
 
         Hdd hdd1 = (Hdd) new Hdd.BuilderHdd()
                 .setFormfactor(FormFactorHdd._2_5)
@@ -155,15 +161,15 @@ public class TestLab6 {
                 .build();
 
         for(int i = 0;i < 5;i++) {
-            ServiceHDD.createHDD(connect,hdd1);
-            ServiceHDD.createHDD(connect,hdd2);
+            ServiceHDD.createHDD(hdd1);
+            ServiceHDD.createHDD(hdd2);
         }
-        List<UniqueHDD> set = ServiceHDD.getHDD(connect);
+        List<UniqueHDD> set = ServiceHDD.getHDD();
 
 
         for(UniqueHDD hdd : set) {
 
-            ServiceHDD.updateHDD(connect, new UniqueHDD((Hdd) new Hdd.BuilderHdd()
+            ServiceHDD.updateHDD(new UniqueHDD((Hdd) new Hdd.BuilderHdd()
                     .setFormfactor(FormFactorHdd._2_5)
                     .setRotationSpeed(7200)
                     .setVid(1321)
@@ -179,7 +185,7 @@ public class TestLab6 {
         }
 
         for(UniqueHDD el : set)
-            ServiceRAM.deleteRAM(connect,el.getId());
+            ServiceRAM.deleteRAM(el.getId());
         connect.close();
     }
 
@@ -188,6 +194,8 @@ public class TestLab6 {
         DBService test = new DBService("jdbc:postgresql://localhost:5432/java","postgres","root");
 
         Connection connect = test.getConnection();
+
+        ServiceSSD.setConnection(connect);
 
         Ssd ssd1 = (Ssd) new Ssd.BuilderSsd()
                 .setMemoryType(MemoryTypeSsd.TLS)
@@ -218,14 +226,14 @@ public class TestLab6 {
                 .build();
 
         for(int i = 0;i < 5;i++) {
-            ServiceSSD.createSSD(connect,ssd1);
-            ServiceSSD.createSSD(connect,ssd2);
+            ServiceSSD.createSSD(ssd1);
+            ServiceSSD.createSSD(ssd2);
         }
-        List<UniqueSSD> set = ServiceSSD.getSSD(connect);
+        List<UniqueSSD> set = ServiceSSD.getSSD();
 
         for(UniqueSSD ssd : set) {
 
-            ServiceSSD.updateSSD(connect, new UniqueSSD((Ssd)new Ssd.BuilderSsd()
+            ServiceSSD.updateSSD(new UniqueSSD((Ssd)new Ssd.BuilderSsd()
                     .setMemoryType(MemoryTypeSsd.SLS)
                     .setFormfactor(FormFactorSsd.M_2)
                     .setVendor("Kingston")
@@ -241,7 +249,7 @@ public class TestLab6 {
         }
 
         for(UniqueSSD el : set)
-            ServiceRAM.deleteRAM(connect,el.getId());
+            ServiceRAM.deleteRAM(el.getId());
         connect.close();
     }
 
@@ -251,6 +259,7 @@ public class TestLab6 {
 
         Connection connect = test.getConnection();
 
+        ServiceMotherboard.setConnection(connect);
 
         Motherboard motherboard1 = new Motherboard.buildMotherboard()
                 .setPid(12210)
@@ -265,14 +274,14 @@ public class TestLab6 {
                 .build();
 
         for(int i = 0;i < 5;i++) {
-            ServiceMotherboard.createMotherboard(connect, motherboard1);
-            ServiceMotherboard.createMotherboard(connect, motherboard2);
+            ServiceMotherboard.createMotherboard(motherboard1);
+            ServiceMotherboard.createMotherboard(motherboard2);
         }
-        List<UniqueMotherboard> set = ServiceMotherboard.getMotherboard(connect);
+        List<UniqueMotherboard> set = ServiceMotherboard.getMotherboard();
 
         for(UniqueMotherboard motherboard : set) {
 
-            ServiceMotherboard.updateMotherboard(connect, new UniqueMotherboard(
+            ServiceMotherboard.updateMotherboard(new UniqueMotherboard(
                     new Motherboard.buildMotherboard()
                             .setPid(12210)
                             .setVid(2311)
@@ -280,7 +289,7 @@ public class TestLab6 {
                             .build(), motherboard.getId()));
         }
         for(UniqueMotherboard el : set)
-            ServiceMotherboard.deleteMotherboard(connect,el.getId());
+            ServiceMotherboard.deleteMotherboard(el.getId());
 
         connect.close();
     }

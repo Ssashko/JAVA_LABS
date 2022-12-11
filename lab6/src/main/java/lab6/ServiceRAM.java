@@ -9,6 +9,13 @@ import java.util.List;
 
 public class ServiceRAM {
 
+    private static Connection connection;
+
+    public static void setConnection(Connection connection) {
+
+        ServiceRAM.connection =  connection;
+    }
+
     private static UniqueRAM fillRAM (ResultSet res) throws SQLException {
         int _id = res.getInt(1);
         int vid = res.getInt(2);
@@ -31,7 +38,7 @@ public class ServiceRAM {
                 .setRamFormFactor(ramFormFactor)
                 .build(), _id);
     }
-    public static List<UniqueRAM> getRAM (Connection connection) throws SQLException {
+    public static List<UniqueRAM> getRAM () throws SQLException {
         Statement statement = connection.createStatement();
 
         ResultSet resultSQL = statement.executeQuery("SELECT " +
@@ -43,12 +50,12 @@ public class ServiceRAM {
         return result;
     }
 
-    public static List<UniqueRAM> getRAM (Connection connection, int id_motherboard) throws SQLException {
+    public static List<UniqueRAM> getRAM (int motherboardId) throws SQLException {
         Statement statement = connection.createStatement();
 
         ResultSet resultSQL = statement.executeQuery("SELECT " +
                 "_id, vid, pid, vendor, capacity, _rank, frequency, _ramtype, _ramformfactor FROM ram WHERE " +
-                "motherboard_id = " + id_motherboard);
+                "motherboard_id = " + motherboardId);
         List<UniqueRAM> result = new ArrayList<>();
         while(resultSQL.next())
             result.add(fillRAM(resultSQL));
@@ -56,12 +63,12 @@ public class ServiceRAM {
         return result;
     }
 
-    public static void deleteRAM (Connection connection, int id) throws SQLException {
+    public static void deleteRAM (int id) throws SQLException {
         Statement statement = connection.createStatement();
         statement.execute("DELETE FROM Ram WHERE _id = " + Integer.toString(id));
     }
 
-    public static void createRAM (Connection connection, Ram ram) throws SQLException {
+    public static void createRAM (Ram ram) throws SQLException {
         Statement statement = connection.createStatement();
 
         statement.execute(String.format(
@@ -71,7 +78,7 @@ public class ServiceRAM {
                 ram.getRamType().ordinal() + 1, ram.getRamFormFactor().ordinal() + 1));
     }
 
-    public static void updateRAM (Connection connection, UniqueRAM uram) throws SQLException {
+    public static void updateRAM (UniqueRAM uram) throws SQLException {
         Statement statement = connection.createStatement();
         Ram ram = uram.getRam();
         statement.execute(String.format("UPDATE Ram SET vid = %d, pid = %d, vendor = '%s', capacity = %d, _rank = %d, " +
@@ -81,10 +88,10 @@ public class ServiceRAM {
                 uram.getId()));
     }
 
-    public static void bindToMotherboard(Connection connection,int ram_id, int motherboard_id) throws SQLException {
+    public static void bindToMotherboard(int ramId, int motherboardId) throws SQLException {
         Statement statement = connection.createStatement();
         statement.execute(String.format("UPDATE Ram SET motherboard_id = %d WHERE _id = %d",
-                motherboard_id, ram_id));
+                motherboardId, ramId));
 
     }
 
