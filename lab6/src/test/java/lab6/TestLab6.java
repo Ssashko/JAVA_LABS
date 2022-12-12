@@ -273,10 +273,7 @@ public class TestLab6 {
                 .setVid(4321)
                 .build();
 
-        for(int i = 0;i < 5;i++) {
-            ServiceMotherboard.createMotherboard(motherboard1);
-            ServiceMotherboard.createMotherboard(motherboard2);
-        }
+
         List<UniqueMotherboard> set = ServiceMotherboard.getMotherboard();
 
         for(UniqueMotherboard motherboard : set) {
@@ -288,8 +285,6 @@ public class TestLab6 {
                             .setVendor("Asus")
                             .build(), motherboard.getId()));
         }
-        for(UniqueMotherboard el : set)
-            ServiceMotherboard.deleteMotherboard(el.getId());
 
         connect.close();
     }

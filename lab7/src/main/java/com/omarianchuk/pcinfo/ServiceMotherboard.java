@@ -1,9 +1,8 @@
-package lab6;
+package com.omarianchuk.pcinfo;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ServiceMotherboard {
 
@@ -238,6 +237,27 @@ public class ServiceMotherboard {
         pStatement.setInt(2, motherboard.getPid());
         pStatement.setString(3, motherboard.getVendor());
         pStatement.setInt(4, umotherboard.getId());
+
+        pStatement.execute();
+    }
+
+    public static void plugCPU(int motherboardId,int cpuId) throws SQLException {
+        final String SQL = "UPDATE Motherboard SET cpu_id = ? WHERE _id = ?";
+
+        PreparedStatement pStatement = connection.prepareStatement(SQL);
+
+        pStatement.setInt(1, cpuId);
+        pStatement.setInt(2, motherboardId);
+
+        pStatement.execute();
+    }
+
+    public static void unplugCPU(int motherboardId) throws SQLException {
+        final String SQL = "UPDATE Motherboard SET cpu_id = null WHERE _id = ?";
+
+        PreparedStatement pStatement = connection.prepareStatement(SQL);
+
+        pStatement.setInt(1, motherboardId);
 
         pStatement.execute();
     }

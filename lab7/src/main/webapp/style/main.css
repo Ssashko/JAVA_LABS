@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.MotherBoard-item {
+    display: flex;
+    justify-content: space-around;
+    font-size: 2rem;
+    background-color: rgba(171, 182, 168, 0.39);
+    padding: 10px;
+}
+.MotherBoard-item > * {
+    padding: 0 10px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+
+}
+
+.MotherBoard-item-title {
+    background-color: rgba(31, 30, 30, 0.8);
+    color: wheat;
+    font-weight: 900;
+}
+.title {
+    background-color: black;
+    color: aliceblue;
+    padding: 10px;
+    text-align: center;
+}
+
+.cpu-item, .disk-item, .ram-item {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1rem;
+    color: azure;
+    background-color: rgba(0, 0, 0, 0.39);
+    padding: 10px;
+}
+.cpu-item-title, .disk-item-title, .ram-item-title {
+    background-color: rgba(31, 30, 30, 0.8);
+    color: wheat;
+    font-weight: 900;
+}
+
+.hide {
+    display: none !important;
+}
+.PC-container{
+    background-color: cornsilk;
+    border-bottom: 6px solid black;
+    margin-bottom: 30px;
+}
+
+h1 {
+    color: red;
+}
+button,input[type="submit"] {
+    border-radius: 10px;
+    margin: 5px;
+    font-size: 10px;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button:hover,input[type="submit"]:hover {
+    background-color: aqua;
+
+}
+
+.modal-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,25%);
+}
+.modal-window {
+    padding: 50px;
+    border-radius: 10px;
+    background-color: coral;
+    display: flex;
+    flex-direction: column;
+}
+.modal-window > label {
+    margin: 10px;
+}
