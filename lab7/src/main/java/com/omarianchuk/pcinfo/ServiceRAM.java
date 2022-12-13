@@ -9,14 +9,14 @@ import java.util.List;
 
 public class ServiceRAM {
 
-    private static Connection connection;
+    private final Connection connection;
 
-    public static void setConnection(Connection connection) {
-
-        ServiceRAM.connection =  connection;
+    ServiceRAM(Connection connection) {
+        this.connection = connection;
     }
 
-    private static UniqueRAM fillRAM (ResultSet res) throws SQLException {
+
+    private UniqueRAM fillRAM (ResultSet res) throws SQLException {
         int _id = res.getInt(1);
         int vid = res.getInt(2);
         int pid = res.getInt(3);
@@ -38,7 +38,7 @@ public class ServiceRAM {
                 .setRamFormFactor(ramFormFactor)
                 .build(), _id);
     }
-    public static List<UniqueRAM> getRAM () throws SQLException {
+    public List<UniqueRAM> getRAM () throws SQLException {
         Statement statement = connection.createStatement();
 
         ResultSet resultSQL = statement.executeQuery("SELECT " +
@@ -50,7 +50,7 @@ public class ServiceRAM {
         return result;
     }
 
-    public static List<UniqueRAM> getRAM (int motherboardId) throws SQLException {
+    public List<UniqueRAM> getRAM (int motherboardId) throws SQLException {
         Statement statement = connection.createStatement();
 
         ResultSet resultSQL = statement.executeQuery("SELECT " +
@@ -63,12 +63,12 @@ public class ServiceRAM {
         return result;
     }
 
-    public static void deleteRAM (int id) throws SQLException {
+    public void deleteRAM (int id) throws SQLException {
         Statement statement = connection.createStatement();
         statement.execute("DELETE FROM Ram WHERE _id = " + Integer.toString(id));
     }
 
-    public static void createRAM (Ram ram) throws SQLException {
+    public void createRAM (Ram ram) throws SQLException {
         Statement statement = connection.createStatement();
 
         statement.execute(String.format(
@@ -78,7 +78,7 @@ public class ServiceRAM {
                 ram.getRamType().ordinal() + 1, ram.getRamFormFactor().ordinal() + 1));
     }
 
-    public static void updateRAM (UniqueRAM uram) throws SQLException {
+    public void updateRAM (UniqueRAM uram) throws SQLException {
         Statement statement = connection.createStatement();
         Ram ram = uram.getRam();
         statement.execute(String.format("UPDATE Ram SET vid = %d, pid = %d, vendor = '%s', capacity = %d, _rank = %d, " +
@@ -88,7 +88,7 @@ public class ServiceRAM {
                 uram.getId()));
     }
 
-    public static void bindToMotherboard(int ramId, int motherboardId) throws SQLException {
+    public void bindToMotherboard(int ramId, int motherboardId) throws SQLException {
         Statement statement = connection.createStatement();
         statement.execute(String.format("UPDATE Ram SET motherboard_id = %d WHERE _id = %d",
                 motherboardId, ramId));

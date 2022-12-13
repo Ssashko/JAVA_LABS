@@ -9,14 +9,13 @@ import java.util.List;
 
 public class ServiceCPU {
 
-    private static Connection connection;
+    final private Connection connection;
 
-    public static void setConnection(Connection connection) {
-
-        ServiceCPU.connection =  connection;
+    public ServiceCPU(Connection connection) {
+        this.connection = connection;
     }
 
-    private static UniqueCPU fillCPU (ResultSet res) throws SQLException {
+    private UniqueCPU fillCPU (ResultSet res) throws SQLException {
         int vid = res.getInt(1);
         String vendor = res.getString(2);
         int pip = res.getInt(3);
@@ -43,7 +42,7 @@ public class ServiceCPU {
                 .setL3CacheCapacity(l3CacheCapacity)
                 .build(), _id);
     }
-    public static List<UniqueCPU> getCPU () throws SQLException {
+    public List<UniqueCPU> getCPU () throws SQLException {
         Statement statement = connection.createStatement();
 
         ResultSet resultSQL = statement.executeQuery("SELECT " +
@@ -55,7 +54,7 @@ public class ServiceCPU {
 
         return result;
     }
-    public static UniqueCPU getCPU ( int id) throws SQLException {
+    public UniqueCPU getCPU ( int id) throws SQLException {
         Statement statement = connection.createStatement();
 
         ResultSet resultSQL = statement.executeQuery("SELECT " +
@@ -65,12 +64,12 @@ public class ServiceCPU {
             return new UniqueCPU(null,0);
         return fillCPU(resultSQL);
     }
-    public static void deleteCPU (int id) throws SQLException {
+    public void deleteCPU (int id) throws SQLException {
         Statement statement = connection.createStatement();
         statement.execute("DELETE FROM Cpu WHERE _id = " + Integer.toString(id));
     }
 
-    public static void createCPU (Cpu cpu) throws SQLException {
+    public void createCPU (Cpu cpu) throws SQLException {
         Statement statement = connection.createStatement();
 
         statement.execute(String.format(
@@ -82,7 +81,7 @@ public class ServiceCPU {
                 cpu.getL2CacheCapacity(), cpu.getL3CacheCapacity() ));
     }
 
-    public static void updateCPU (UniqueCPU ucpu) throws SQLException {
+    public void updateCPU (UniqueCPU ucpu) throws SQLException {
         Statement statement = connection.createStatement();
         Cpu cpu = ucpu.getCpu();
         statement.execute(String.format("UPDATE Cpu SET vid = %d, vendor = '%s', pid = %d, _name = '%s', sokettype_id = %d, " +

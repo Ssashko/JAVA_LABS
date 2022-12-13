@@ -6,13 +6,13 @@ import java.util.List;
 
 public class ServiceMotherboard {
 
-    private static Connection connection;
+    final private Connection connection;
 
-    public static void setConnection(Connection connection) {
-
-        ServiceMotherboard.connection =  connection;
+    public ServiceMotherboard (Connection connection) {
+        this.connection = connection;
     }
-    private static UniqueMotherboard fillMotherboard (ResultSet resultSQLBASE, ResultSet resultSQLSSD,
+
+    private UniqueMotherboard fillMotherboard (ResultSet resultSQLBASE, ResultSet resultSQLSSD,
                                                       ResultSet resultSQLHHD, ResultSet resultSQLRAM)
             throws SQLException {
 
@@ -64,7 +64,7 @@ public class ServiceMotherboard {
         return motherboard;
     }
 
-    private static void fillRAMMotherboard (ResultSet res, UniqueMotherboard motherboard) throws SQLException {
+    private void fillRAMMotherboard (ResultSet res, UniqueMotherboard motherboard) throws SQLException {
         int _id = res.getInt(6);
         if(_id == 0)
             return;
@@ -88,7 +88,7 @@ public class ServiceMotherboard {
                 .setRamFormFactor(ramFormFactor)
                 .build());
     }
-    private static void fillHDDMotherboard (ResultSet res, UniqueMotherboard motherboard) throws SQLException {
+    private void fillHDDMotherboard (ResultSet res, UniqueMotherboard motherboard) throws SQLException {
         int _id = res.getInt(6);
         if(_id == 0)
             return;
@@ -119,7 +119,7 @@ public class ServiceMotherboard {
                 .setInterface_(interface_)
                 .build());
     }
-    private static void fillSSDMotherboard (ResultSet res, UniqueMotherboard motherboard) throws SQLException {
+    private void fillSSDMotherboard (ResultSet res, UniqueMotherboard motherboard) throws SQLException {
         int _id = res.getInt(6);
         if(_id == 0)
             return;
@@ -150,7 +150,7 @@ public class ServiceMotherboard {
                 .setInterface_(interface_)
                 .build());
     }
-    private static void fillCPUMotherboard (ResultSet res, UniqueMotherboard motherboard) throws SQLException {
+    private void fillCPUMotherboard (ResultSet res, UniqueMotherboard motherboard) throws SQLException {
         if(res.getInt(6) == 0)
             return;
         int vid = res.getInt(7);
@@ -181,7 +181,7 @@ public class ServiceMotherboard {
 
 
 
-    public static List<UniqueMotherboard> getMotherboard () throws SQLException {
+    public List<UniqueMotherboard> getMotherboard () throws SQLException {
         Statement statement = connection.createStatement();
         Statement[] add_statement = {
                 connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY),
@@ -209,14 +209,14 @@ public class ServiceMotherboard {
         return result;
     }
 
-    public static void deleteMotherboard (int id) throws SQLException {
+    public void deleteMotherboard (int id) throws SQLException {
         final String SQL = "DELETE FROM Motherboard WHERE _id = ?";
         PreparedStatement pStatement = connection.prepareStatement(SQL);
         pStatement.setInt(1,id);
         pStatement.execute();
     }
 
-    public static void createMotherboard (Motherboard motherboard)   throws SQLException {
+    public void createMotherboard (Motherboard motherboard)   throws SQLException {
         final String SQL = "INSERT INTO Motherboard (vid, pid, vendor) VALUES (?, ?, ?)";
 
         PreparedStatement pStatement = connection.prepareStatement(SQL);
@@ -227,7 +227,7 @@ public class ServiceMotherboard {
         pStatement.execute();
     }
 
-    public static void updateMotherboard (UniqueMotherboard umotherboard) throws SQLException {
+    public void updateMotherboard (UniqueMotherboard umotherboard) throws SQLException {
         final String SQL = "UPDATE Motherboard SET vid = ?, pid = ?, vendor = ? WHERE _id = ?";
 
         PreparedStatement pStatement = connection.prepareStatement(SQL);
@@ -241,7 +241,7 @@ public class ServiceMotherboard {
         pStatement.execute();
     }
 
-    public static void plugCPU(int motherboardId,int cpuId) throws SQLException {
+    public void plugCPU(int motherboardId,int cpuId) throws SQLException {
         final String SQL = "UPDATE Motherboard SET cpu_id = ? WHERE _id = ?";
 
         PreparedStatement pStatement = connection.prepareStatement(SQL);
@@ -252,7 +252,7 @@ public class ServiceMotherboard {
         pStatement.execute();
     }
 
-    public static void unplugCPU(int motherboardId) throws SQLException {
+    public void unplugCPU(int motherboardId) throws SQLException {
         final String SQL = "UPDATE Motherboard SET cpu_id = null WHERE _id = ?";
 
         PreparedStatement pStatement = connection.prepareStatement(SQL);

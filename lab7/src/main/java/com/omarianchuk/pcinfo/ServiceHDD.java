@@ -9,13 +9,13 @@ import java.util.List;
 
 public class ServiceHDD {
 
-    private static Connection connection;
+    final private Connection connection;
 
-    public static void setConnection(Connection connection) {
-
-        ServiceHDD.connection =  connection;
+    public ServiceHDD(Connection connection) {
+        this.connection = connection;
     }
-    private static UniqueHDD fillHDD (ResultSet res) throws SQLException {
+
+    private UniqueHDD fillHDD (ResultSet res) throws SQLException {
         int _id = res.getInt(1);
         String vendor = res.getString(2);
         int vid = res.getInt(3);
@@ -46,7 +46,7 @@ public class ServiceHDD {
     }
 
 
-    public static List<UniqueHDD> getHDD () throws SQLException {
+    public List<UniqueHDD> getHDD () throws SQLException {
         Statement statement = connection.createStatement();
 
         ResultSet resultSQL = statement.executeQuery("SELECT " +
@@ -59,7 +59,7 @@ public class ServiceHDD {
         return result;
     }
 
-    public static List<UniqueHDD> getHDD (int motherboardId) throws SQLException {
+    public List<UniqueHDD> getHDD (int motherboardId) throws SQLException {
         Statement statement = connection.createStatement();
 
         ResultSet resultSQL = statement.executeQuery("SELECT " +
@@ -73,12 +73,12 @@ public class ServiceHDD {
         return result;
     }
 
-    public static void deleteHDD (int id) throws SQLException {
+    public void deleteHDD (int id) throws SQLException {
         Statement statement = connection.createStatement();
         statement.execute("DELETE FROM Hdd WHERE _id = " + Integer.toString(id));
     }
 
-    public static void createHDD (Hdd hdd) throws SQLException {
+    public void createHDD (Hdd hdd) throws SQLException {
         Statement statement = connection.createStatement();
 
         statement.execute(String.format(
@@ -90,7 +90,7 @@ public class ServiceHDD {
                 hdd.getRandomSpeedOfRead(), hdd.getRotationSpeed(), hdd.getFormfactor().ordinal() + 1));
     }
 
-    public static void updateHDD (UniqueHDD uhdd) throws SQLException {
+    public void updateHDD (UniqueHDD uhdd) throws SQLException {
         Statement statement = connection.createStatement();
         Hdd hdd = uhdd.getHdd();
         statement.execute(String.format("UPDATE Hdd SET vendor = '%s', " +
@@ -105,7 +105,7 @@ public class ServiceHDD {
 
 
 
-    public static void bindToMotherboard(int hddId, int motherboardId) throws SQLException {
+    public void bindToMotherboard(int hddId, int motherboardId) throws SQLException {
         Statement statement = connection.createStatement();
         statement.execute(String.format("UPDATE Hdd SET motherboard_id = %d WHERE _id = %d",
                 motherboardId, hddId));

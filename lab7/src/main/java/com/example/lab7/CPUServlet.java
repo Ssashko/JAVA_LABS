@@ -81,8 +81,8 @@ public class CPUServlet extends HttpServlet {
         DBService db = new DBService(DB_url,DB_login,DB_pass);
 
         try(Connection connection = db.getConnection()) {
-            ServiceCPU.setConnection(connection);
-            ServiceCPU.createCPU(cpu);
+            ServiceCPU dbService = new ServiceCPU(connection);
+            dbService.createCPU(cpu);
 
         } catch (SQLException ex) {
             response.setStatus(400);
@@ -109,8 +109,8 @@ public class CPUServlet extends HttpServlet {
         DBService db = new DBService(DB_url,DB_login,DB_pass);
 
         try(Connection connection = db.getConnection()) {
-            ServiceCPU.setConnection(connection);
-            ServiceCPU.deleteCPU(id);
+            ServiceCPU dbService = new ServiceCPU(connection);
+            dbService.deleteCPU(id);
 
         } catch (SQLException ex) {
             response.setStatus(400);
@@ -167,8 +167,8 @@ public class CPUServlet extends HttpServlet {
         DBService db = new DBService(DB_url,DB_login,DB_pass);
 
         try(Connection connection = db.getConnection()) {
-            ServiceCPU.setConnection(connection);
-            ServiceCPU.updateCPU(cpu);
+            ServiceCPU dbService = new ServiceCPU(connection);
+            dbService.updateCPU(cpu);
 
         } catch (SQLException ex) {
             response.setStatus(400);

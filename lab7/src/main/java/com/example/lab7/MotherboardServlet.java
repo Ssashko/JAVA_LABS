@@ -60,8 +60,8 @@ public class MotherboardServlet extends HttpServlet {
         DBService db = new DBService(DB_url,DB_login,DB_pass);
 
         try(Connection connection = db.getConnection()) {
-            ServiceMotherboard.setConnection(connection);
-            ServiceMotherboard.plugCPU(idMotherboard,idCpu);
+            ServiceMotherboard dbService = new ServiceMotherboard(connection);
+            dbService.plugCPU(idMotherboard,idCpu);
 
         } catch (SQLException ex) {
             response.setStatus(400);
@@ -90,8 +90,8 @@ public class MotherboardServlet extends HttpServlet {
         DBService db = new DBService(DB_url,DB_login,DB_pass);
 
         try(Connection connection = db.getConnection()) {
-            ServiceMotherboard.setConnection(connection);
-            ServiceMotherboard.unplugCPU(idMotherboard);
+            ServiceMotherboard dbService = new ServiceMotherboard(connection);
+            dbService.unplugCPU(idMotherboard);
 
         } catch (SQLException ex) {
             response.setStatus(400);
@@ -127,8 +127,8 @@ public class MotherboardServlet extends HttpServlet {
         DBService db = new DBService(DB_url,DB_login,DB_pass);
 
         try(Connection connection = db.getConnection()) {
-            ServiceMotherboard.setConnection(connection);
-            ServiceMotherboard.createMotherboard(motherboard);
+            ServiceMotherboard dbService = new ServiceMotherboard(connection);
+            dbService.createMotherboard(motherboard);
 
         } catch (SQLException ex) {
             response.setStatus(400);
@@ -155,8 +155,9 @@ public class MotherboardServlet extends HttpServlet {
         DBService db = new DBService(DB_url,DB_login,DB_pass);
 
         try(Connection connection = db.getConnection()) {
-            ServiceMotherboard.setConnection(connection);
-            ServiceMotherboard.deleteMotherboard(id);
+
+            ServiceMotherboard dbService = new ServiceMotherboard(connection);
+            dbService.deleteMotherboard(id);
 
         } catch (SQLException ex) {
             response.setStatus(400);
@@ -195,8 +196,8 @@ public class MotherboardServlet extends HttpServlet {
         DBService db = new DBService(DB_url,DB_login,DB_pass);
 
         try(Connection connection = db.getConnection()) {
-            ServiceMotherboard.setConnection(connection);
-            ServiceMotherboard.updateMotherboard(motherboard);
+            ServiceMotherboard dbService = new ServiceMotherboard(connection);
+            dbService.updateMotherboard(motherboard);
 
         } catch (SQLException ex) {
             response.setStatus(400);
