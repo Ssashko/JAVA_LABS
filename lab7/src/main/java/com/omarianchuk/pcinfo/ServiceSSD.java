@@ -9,14 +9,13 @@ import java.util.List;
 
 public class ServiceSSD {
 
-    private final Connection connection;
+    private static Connection connection;
 
-    ServiceSSD(Connection connection) {
-        this.connection =  connection;
+    public static void setConnection(Connection connection) {
+
+        ServiceSSD.connection =  connection;
     }
-
-
-    private UniqueSSD fillSSD (ResultSet res) throws SQLException {
+    private static UniqueSSD fillSSD (ResultSet res) throws SQLException {
         int _id = res.getInt(1);
         String vendor = res.getString(2);
         int vid = res.getInt(3);
@@ -47,7 +46,7 @@ public class ServiceSSD {
     }
 
 
-    public List<UniqueSSD> getSSD () throws SQLException {
+    public static List<UniqueSSD> getSSD () throws SQLException {
         Statement statement = connection.createStatement();
 
         ResultSet resultSQL = statement.executeQuery("SELECT " +
@@ -60,7 +59,7 @@ public class ServiceSSD {
         return result;
     }
 
-    public  List<UniqueSSD> getSSD (int id_motherboard) throws SQLException {
+    public static  List<UniqueSSD> getSSD (int id_motherboard) throws SQLException {
 
         Statement statement = connection.createStatement();
 
@@ -76,12 +75,12 @@ public class ServiceSSD {
 
     }
 
-    public void deleteSSD (int id) throws SQLException {
+    public static void deleteSSD (int id) throws SQLException {
         Statement statement = connection.createStatement();
         statement.execute("DELETE FROM Ssd WHERE _id = " + Integer.toString(id));
     }
 
-    public void createSSD (Ssd ssd) throws SQLException {
+    public static void createSSD (Ssd ssd) throws SQLException {
         Statement statement = connection.createStatement();
 
         statement.execute(String.format(
@@ -93,7 +92,7 @@ public class ServiceSSD {
                 ssd.getRandomSpeedOfRead(), ssd.getMemoryType().ordinal() + 1, ssd.getFormfactor().ordinal() + 1));
     }
 
-    public void updateSSD (UniqueSSD ussd) throws SQLException {
+    public static void updateSSD (UniqueSSD ussd) throws SQLException {
         Statement statement = connection.createStatement();
         Ssd ssd = ussd.getSsd();
         statement.execute(String.format("UPDATE Ssd SET vendor = '%s', " +
@@ -106,7 +105,7 @@ public class ServiceSSD {
                 ussd.getId()));
     }
 
-    public void bindToMotherboard(int ssd_id, int motherboard_id) throws SQLException {
+    public static void bindToMotherboard(int ssd_id, int motherboard_id) throws SQLException {
         Statement statement = connection.createStatement();
         statement.execute(String.format("UPDATE Ssd SET motherboard_id = %d WHERE _id = %d",
                 motherboard_id, ssd_id));
