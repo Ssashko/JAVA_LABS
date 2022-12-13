@@ -3,8 +3,11 @@ package com.example.lab7;
 import java.io.*;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.omarianchuk.pcinfo.*;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
@@ -15,18 +18,30 @@ public class MotherboardServlet extends HttpServlet {
     final String DB_url = "jdbc:postgresql://localhost:5432/java";
     final String DB_login = "postgres";
     final String DB_pass = "root";
-    final String JSP_location = "/Gradle___com_example___lab7_1_0_SNAPSHOT_war/";
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/html");
+    final String JSP_location = "motherboard.jsp";
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-        // Hello
-        PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        out.println("<h1>motherboard servlet</h1>");
-        out.println("</body></html>");
+        DBService db = new DBService(DB_url,DB_login,DB_pass);
+        List<UniqueMotherboard> motherBoardList = null;
+
+        try(Connection connect = db.getConnection()) {
+            ServiceMotherboard.setConnection(connect);
+            motherBoardList = ServiceMotherboard.getMotherboard();
+
+        } catch (SQLException ex) {
+            response.setStatus(400);
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();
+            out.println(ex);
+            return;
+        }
+
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(JSP_location);
+        request.setAttribute("listMotherBoard", motherBoardList);
+        requestDispatcher.forward(request, response);
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         if(request.getParameter("http-method").equals("post"))
             _doPost(request,response);
@@ -40,7 +55,7 @@ public class MotherboardServlet extends HttpServlet {
             doPostCpuUnPlug(request,response);
 
     }
-    public void doPostCpuPlug(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void doPostCpuPlug(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         int idCpu = 0;
         int idMotherboard = 0;
         try
@@ -70,9 +85,9 @@ public class MotherboardServlet extends HttpServlet {
             out.println(ex);
             return;
         }
-        response.sendRedirect(JSP_location);
+        doGet(request, response);
     }
-    public void doPostCpuUnPlug(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void doPostCpuUnPlug(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         int idMotherboard = 0;
         try
         {
@@ -100,9 +115,9 @@ public class MotherboardServlet extends HttpServlet {
             out.println(ex);
             return;
         }
-        response.sendRedirect(JSP_location);
+        doGet(request, response);
     }
-    public void _doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void _doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         Motherboard motherboard = null;
         try
@@ -137,9 +152,9 @@ public class MotherboardServlet extends HttpServlet {
             out.println(ex);
             return;
         }
-        response.sendRedirect(JSP_location);
+        doGet(request, response);
     }
-    public void doDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void doDelete(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         int id = 0;
         try
         {
@@ -166,9 +181,9 @@ public class MotherboardServlet extends HttpServlet {
             return;
         }
 
-        response.sendRedirect(JSP_location);
+        doGet(request, response);
     }
-    public void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         UniqueMotherboard motherboard = null;
         try
         {
@@ -205,7 +220,7 @@ public class MotherboardServlet extends HttpServlet {
             out.println(ex);
             return;
         }
-        response.sendRedirect(JSP_location);
+        doGet(request, response);
 
     }
 

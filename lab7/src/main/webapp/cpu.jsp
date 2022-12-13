@@ -4,19 +4,7 @@
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.omarianchuk.pcinfo.*" %>
-<%
-    DBService db = new DBService("jdbc:postgresql://localhost:5432/java","postgres","root");
-    List<UniqueCPU> CPUList = null;
-
-    try(Connection connect = db.getConnection()) {
-        ServiceCPU.setConnection(connect);
-        CPUList = ServiceCPU.getCPU();
-
-    } catch (SQLException e) {
-        out.println(e.toString());
-    }
-
-%>
+<% List<UniqueCPU> CPUList = (List<UniqueCPU>) request.getAttribute("listCPU");%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +13,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/style/main.css">
 </head>
 <body>
+
 <h1 class="title">
     PC information
 </h1>
